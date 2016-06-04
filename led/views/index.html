@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>bob</title>
+<link rel="icon" href="/favicon.ico" type="image/gif">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+.container {
+  padding: 1em;
+}
+</style>
+<body>
+
+<div class="ui container">
+  <h2 class="ui center aligned icon header">
+    <i class="circular lab icon"></i>
+    Bob
+  </h2>
+
+  <div class="ui stackable four column grid">
+    <div class="column">
+      <button class="fluid ui blue massive button action" led="blue">Blue</button>
+    </div>
+    <div class="column">
+      <button class="fluid ui red massive button action" led="red">Red</button>
+    </div>
+    <div class="column">
+      <button class="fluid ui green massive button action" led="green">Green</button>
+    </div>
+    <div class="column">
+      <button class="fluid ui yellow massive button action" led="yellow">Yellow</button>
+    </div>
+  <div class="result"></div>
+</div>
+
+</body>
+<script src="https://thbkrkr.github.io/s.js/dist/s.2.db65b41.js"></script><script>
+
+ledStatus = {}
+
+$('.action').on('mousedown', function() {
+  console.log('onmousedown')
+  led = $(this).attr('led')
+  $get('/led/on/' + led)
+})
+
+$('.action').on('mouseup', function() {
+  console.log('onmouseup')
+  led = $(this).attr('led')
+  $get('/led/off/' + led)
+})
+
+$('.action').on('touchstart', function() {
+  console.log('touchstart')
+  led = $(this).attr('led')
+  $get('/led/on/' + led)
+})
+
+$('.action').on('touchend', function() {
+  console.log('touchend')
+  led = $(this).attr('led')
+  $get('/led/off/' + led)
+})
+
+
+/*$('.action').on('click', function() {
+  led = $(this).attr('led')
+  status = ledStatus[led]
+  if (!status || status == "undefined") {
+    status = "on"
+  }
+
+  $get('/led/' + status + '/' + led, function(data) {
+    $('.result').html('led: ' + led + ' - status: ' + status)
+  })
+
+  if (status == "on") {
+    status = "off"
+  } else {
+    status = "on"
+  }
+  ledStatus[led] = status
+})*/
+
+</script>
+</body>
+</html>
