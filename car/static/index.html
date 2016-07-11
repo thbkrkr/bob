@@ -10,24 +10,82 @@
 <style>
 /** begin:CSS **/
 
+#bg {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+}
+#bg img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+}
+
+.ui.grid {
+  padding-top: 4em;
+}
+
+.button {
+  height: 250px;
+}
+
+.ui.basic.massive {
+  border: 2px solid;
+}
+
 /** end:CSS **/
 </style>
+<body>
 <!-- begin:HTML -->
 
-<body>
-<div class="main ui container">
+<div id="bg">
+  <img src="static/bob-webcam.jpg">
+</div>
 
-  <div class="ui inverted segment">
-    <button class="ui inverted button">Standard</button>
-    <button class="ui inverted red button">Red</button>
-    <button class="ui inverted orange button">Orange</button>
-    <button class="ui inverted yellow button">Yellow</button>
+<div class="ui grid container">
+  <div class="six wide column">
+    <button class="fluid ui basic massive blue button" action="forward">
+      <i class="big arrow up icon"></i>
+    </button>
   </div>
+  <div class="ten wide column">
+  </div>
+  <div class="six wide column">
+    <button class="fluid ui basic massive red button" action="back">
+      <i class="big arrow down icon"></i>
+    </button>
+  </div>
+  <div class="five wide column">
+    <button class="fluid ui basic massive yellow button" action="left">
+      <i class="big arrow left icon"></i>
+    </button>
+  </div>
+  <div class="five wide column">
+    <button class="fluid ui basic massive olive button" action="right">
+      <i class="big arrow right icon"></i>
+    </button>
+  </div>
+</div>
 
 <!-- end:HTML -->
-</div>
 <script src="https://thbkrkr.github.io/s.js/dist/s.5.f1202eb.js"></script><script>
 /** begin:JS */
+
+function init() {
+  $('.button').on('click', function() {
+    action = $(this).attr('action')
+    console.log(action)
+  })
+}
+
+init()
 
 /** end:JS */
 </script></body></html>
